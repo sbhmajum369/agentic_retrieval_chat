@@ -1,18 +1,66 @@
-# Talk to PDF  
+# Agentic Retrieval and Chat (ARC)  
+
+**ARC** is an OFFLINE local Agentic Retrieval system for document parsing and RAG based conversation. It is a minimalistic Document parsing (PDF) and Question-Answering system using open-source low resource models (VLM, LLM).  
+
+It can be used with Scientific Papers (PDF) to sort through relevant information and find any complex queries, without going through massive volume of text.  
+
+
+## Overview  
+
+It is a 2 Stage application.  
+
+The ***EXTRACTION*** module extracts text, image, tables and other metadata from a PDF (preferably scientific paper) and saves the data. The `.json` file contains all the textual data and metadata including a summary of the paper. It works well with Scientific Papers. (*coming soon*)  
+
+The ***CHAT*** module acts as an **Agent** and scans through the files, to find relevant text chunks and also generates answers for each query/meta-queries. It uses Reasoning, non-Reasoning models, semantic embedding match and chunk re-ranking, to analyze the user query and generate response. (*more updates coming soon*)  
+
+The key is ***Hierarchical Semantic chunking***.  
+
+This was built for local GPU powered device usage in mind. Hence, "**max. each model parameter recommended is 4B**"  
+
+At the moment Qwen3 and Gemma3 models perform relatively better at instruction following.  
+
+Some complex queries can take much longer (~5-10 mins)  
+
+## Features  
+
+* Smart Query Analysis for semantic information search and targetted document analysis.  
+* No Vector Database required. Vector similarity is used on the fly. In production setting, SQL or NoSQL database will suffice. Hence, making it easy to integrate with existing systems, without increasing system overhead.  
+* It has the potential to for using newer SOTA process and frameworks for Agentic RAG (ReACT, keyword + reasoning, etc.)  
+* Future version will include multi-modal reasoning and information in both modules.  
+
+__Current Limitations__  
+
+* Max PDF length that can be used by the CHAT system is 15 pages, due to context length limitations.  
+* No chat memory at the moment (single question-answer)  
 
 
 
 ## Installation  
 
-### Step 1 (python setup)  
-Create `venv` and from inside it run *`dep_install_...`* following file for complete installation,  
+__Step 1 (python setup)__  
+This setup is for `venv` based installation,  
 
-* `python -m venv .venv`  
-* `.venv/Scripts/activate.bat` OR `.venv/bin/activate`  
-* For Linux OS: run `dep_install_windows.bat`  
-   For Windows OS (>=10.0): run `dep_install_linux.sh`  
+1. Virtual Environment Setup:  
+    ```bash 
+    python -m venv .venv 
+    .venv/Scripts/activate.bat
+    ```  
+    ```bash  
+      python -m venv .venv
+      .venv/bin/activate
+    ```  
 
-### Step 2 (ollama setup)  
+2. Dependency installation:  
+  - For Linux OS (Ubuntu >=22.0):  
+    ```bash 
+      dep_install_linux.sh
+    ```  
+  - For Windows OS (>=10.0):  
+    ```bash 
+      dep_install_windows.bat
+    ```  
+
+__Step 2 (ollama setup)__  
 
 * Install [Ollama](https://github.com/ollama/ollama)  
 * Pull the model: `ollama pull llama3.2` (current list can be found at *main.py*)  
@@ -21,12 +69,13 @@ Create `venv` and from inside it run *`dep_install_...`* following file for comp
 ## Usage  
 
 ### Extraction  
-Usage for extraction of data in a JSON from PDF (*coming soon*)  
+Usage for extraction of data from PDF (*coming soon*)  
 
 
 ### Chat  
 After extracting the PDF data and metadata you can chat with the `.json` files using the **Chat** module.  
-In general you can use any `.json` file for this functionality, you have to follow only the following schema structure.  
+In general you can use any `.json` file for this functionality. You have to follow only the following schema structure:  
+
 
 ```json
 {
@@ -70,20 +119,6 @@ response, doc_list, sub_queries, matched_src_text = local_agent.ask(user_query, 
 
 ```
 
-
-## Details  
-
-It is a 2 Stage application.  
-
-The **extraction** module extracts text, image, tables and other metadata from a PDF (preferably scientific paper) and saves the data. The `.json` file contains all the textual data and metadata including a summary of the paper. 
-
-The **chat** module acts as an Agent and scans through the files, to find relevant text chunks and also generates answers for each query/meta-queries. The goal is to use it with a reasoning model for grounded information retrieval. (*more updates coming soon*)  
-
-This was built with local GPU powered device usage in mind. Hence, "**max. each model parameter recommended is 4B**"  
-
-At the moment Qwen3 and Gemma3 models perform relatively better at instruction following.  
-
-Some complex queries can take much longer (~5-10 mins)  
 
 
 ### Sample Queries  
