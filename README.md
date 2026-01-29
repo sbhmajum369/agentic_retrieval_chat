@@ -25,7 +25,7 @@ Some complex queries can take much longer (~5-10 mins)
 
 * Smart Query Analysis for semantic information search and targetted document analysis.  
 * No Vector Database required. Vector similarity is used on the fly. In production setting, SQL or NoSQL database will suffice. Hence, making it easy to integrate with existing systems, without increasing system overhead.  
-* It has the potential to for using newer SOTA process and frameworks for Agentic RAG (ReACT, keyword + reasoning, etc.)  
+* It has the potential to be used for newer SOTA process and frameworks for Agentic RAG (ReACT, keyword + reasoning, etc.)  
 * Future version will include multi-modal reasoning and information in both modules.  
 
 __Current Limitations__  
