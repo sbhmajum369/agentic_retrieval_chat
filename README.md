@@ -49,16 +49,19 @@ __Step 1 (python setup)__
 This setup is for `venv` based installation,  
 
 1. Virtual Environment Setup:  
+    Windows (10/11)  
     ```bash 
     python -m venv .venv 
     .venv/Scripts/activate.bat
-    ```  
+    ```
+    OR,
+    Linux  
     ```bash  
       python -m venv .venv
       .venv/bin/activate
     ```  
 
-2. Dependency installation:  
+3. Dependency installation:  
   - For Linux OS (Ubuntu >=22.0):  
     ```bash 
       dep_install_linux.sh
