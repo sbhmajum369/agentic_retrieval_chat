@@ -56,6 +56,7 @@ Finally, a per-document score is generated to get the relevance based on the que
 * Prompt-free PDF parsing. You can also parse 1 single pdf which can be used for targetted information retrieval.  
 * Decoupled Parsing and Coversation stage, which enables flexible Agentic integration into AI assistants.  
 
+***Note***: Using only text data in CHAT module at the moment.  
 
 It has the potential to be used for newer SOTA process and frameworks for Agentic RAG (ReACT, keyword + reasoning, etc.)  
 
@@ -172,9 +173,8 @@ HuggingFace and Sentence-Transformer models will be auto downloaded the first ti
   2) `ModelsQA` and `ModelsQueryAnalysis`  
   3) Enter your query in `user_input`  
 
+
 Finally >>> `python main.py`  
-
-
 
 
 ```python
@@ -228,11 +228,13 @@ General Qs for any json file (SQUAD dataset),
 **GPU VRAM**: 6-8GB (NVIDIA CUDA compatibile)  
 
 
-________ 
+________  
+
+***PaddleOCR*** is in use for PDF parsing.  
 
 Special Thanks to [@Qwen3](https://github.com/QwenLM/Qwen3) and [@gemma](https://github.com/google-deepmind/gemma) teams for building efficient and high-quality low-resource usage models. 
 
-This version uses #HuggingFace and #Ollama for local OFFLINE usage.  
+This version uses @HuggingFace and #Ollama for local OFFLINE usage.  
 
 
 
