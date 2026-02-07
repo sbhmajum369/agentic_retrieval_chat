@@ -44,7 +44,9 @@ def run_extraction(src_path, dest_dir, json_path, page_limit:int=100, target_pdf
         extracted_filenames = [] 
         extract.parse_pdf(src_path, dest_dir, page_limit=page_limit, target_file=target_pdf, save_page_markdown=False) 
 
-        root_folder = os.path.join(dest_dir, target_pdf) 
+        name, suffix = os.path.splitext(target_pdf)
+
+        root_folder = os.path.join(dest_dir, name) 
         for file in os.listdir(root_folder):
             if file.lower().endswith(".json"):
                 source_path = os.path.join(root_folder, file)
@@ -150,22 +152,19 @@ def run_chat(user_query:str, local_dir_path:str):
 """ Select between the 2 modes and run """
 
 def main():
-    pdf_src_path = os.path.abspath("sample_docs/pdf") 
-    pdf_dest_dir = os.path.abspath("sample_docs/pdf_output") 
-    json_path = os.path.abspath("sample_docs/JSON") 
+    pdf_src_path = os.path.abspath("docs/pdf") 
+    pdf_dest_dir = os.path.abspath("docs/pdf_output") 
+    json_path = os.path.abspath("docs/JSON") 
 
     os.makedirs(pdf_dest_dir, exist_ok=True) 
     os.makedirs(json_path, exist_ok=True) 
 
     ## EXTRACTION module ## 
-    extracted_file_names = run_extraction(pdf_src_path, pdf_dest_dir, json_path, page_limit=5) 
+    extracted_file_names = run_extraction(pdf_src_path, pdf_dest_dir, json_path, target_pdf="The_Anatomy_of_a_Personal_Health_Agent.pdf") 
 
     ## CHAT module ## 
-    # Samples:
-    # "Find the main authors of all the research papers in the document collection." 
-    # "What is (2 + 2^3 - 76) = ?"  => No answer 
-    user_input = "Find the main authors of all the research papers in the document collection." 
-    run_chat(user_input, json_path) 
+    # user_input = "How many types of vision-language (VLM) models are there and what are their current limitations?" 
+    # run_chat(user_input, json_path) 
 
     
     return 
@@ -175,6 +174,4 @@ if __name__ == '__main__':
     env_path = sys.path[0] 
 
     main()
-
-
 
