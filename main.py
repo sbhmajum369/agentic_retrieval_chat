@@ -11,8 +11,8 @@ import json
 # SRC_DIR = Path(__file__).resolve().parent / "src"
 # sys.path.insert(0, str(SRC_DIR))
 
-# import pyarmor_runtime_000000
-# print("PyArmor runtime OK")
+import pyarmor_runtime_000000
+print("PyArmor runtime OK")
 
 from src.chat import agent 
 from src.extraction import extract 
@@ -152,9 +152,9 @@ def run_chat(user_query:str, local_dir_path:str):
 """ Select between the 2 modes and run """
 
 def main():
-    pdf_src_path = os.path.abspath("docs/pdf") 
-    pdf_dest_dir = os.path.abspath("docs/pdf_output") 
-    json_path = os.path.abspath("docs/JSON") 
+    pdf_src_path = os.path.abspath("sample_docs/pdf") 
+    pdf_dest_dir = os.path.abspath("sample_docs/pdf_output") 
+    json_path = os.path.abspath("sample_docs/JSON") 
 
     os.makedirs(pdf_dest_dir, exist_ok=True) 
     os.makedirs(json_path, exist_ok=True) 
