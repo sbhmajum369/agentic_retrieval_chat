@@ -1,4 +1,5 @@
 # Agentic Retrieval and Chat (ARC)  
+__(Requires Python 3.12.x. Runs on both Win 10/11)__
 
 **ARC** is an OFFLINE local Agentic Retrieval system for document parsing and RAG based conversation. It is a minimalistic Document parsing (PDF) and Question-Answering system using open-source low resource models (VLM, LLM).  
 
