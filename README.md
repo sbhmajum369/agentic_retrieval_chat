@@ -45,7 +45,7 @@ Finally, a per-document score is generated to get the relevance based on the que
 ### Keep in mind  
 
 1) This was built for local GPU powered device usage in mind. Hence, "**max. each model parameter recommended is 4B**"  
-2) At the moment Qwen3 and Gemma3 models perform relatively better at instruction following. By *default* one should choose **Qwen3** at the moment to avoid hallucinations for query analysis.  
+2) At the moment Qwen3 and Gemma3 models perform relatively better at instruction following. (*NEW*: GPT-OSS has also been tested to work well with query decomposition).  
 3) Reasoning mode has been turned **OFF** at the moment.  
 4) Some complex queries can take much longer (~5-10 mins).  
 
