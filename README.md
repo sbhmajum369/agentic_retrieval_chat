@@ -233,7 +233,7 @@ ________
 
 ***PaddleOCR*** is in use for PDF parsing.  
 
-Special Thanks to [Qwen3](https://github.com/QwenLM/Qwen3) and [gemma](https://github.com/google-deepmind/gemma) teams for building efficient and high-quality low-resource usage models. 
+Special Thanks to [Qwen3](https://github.com/QwenLM/Qwen3) and [gemma](https://github.com/google-deepmind/gemma) teams for building efficient and low-resource usage models. 
 
 This version uses [HuggingFace](https://github.com/huggingface), [Ollama](https://github.com/ollama/ollama) and [ollama-python](https://github.com/ollama/ollama-python) for local OFFLINE usage.  
 
